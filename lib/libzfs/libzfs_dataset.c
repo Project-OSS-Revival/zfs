@@ -4036,7 +4036,8 @@ zfs_destroy_snaps_nvl(libzfs_handle_t *hdl, nvlist_t *snaps, boolean_t defer)
 			if (nvlist_empty(existing_holds)) {
 				ret = zfs_standard_error(hdl, errno, errbuf);
 			} else {
-				const nvpair_t *holder = nvlist_next_nvpair(existing_holds, NULL);
+				const nvpair_t *holder = nvlist_next_nvpair(
+				    existing_holds, NULL);
 				zfs_error_aux(hdl,
 				    dgettext(TEXT_DOMAIN, "held by %s"),
 				    nvpair_name(holder));
