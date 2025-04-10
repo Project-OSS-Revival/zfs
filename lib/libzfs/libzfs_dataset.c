@@ -4042,9 +4042,9 @@ zfs_destroy_snaps_nvl(libzfs_handle_t *hdl, nvlist_t *snaps, boolean_t defer)
 				    dgettext(TEXT_DOMAIN, "held by %s"),
 				    nvpair_name(holder));
 				ret = zfs_error(hdl, EBUSY, errbuf);
+				nvlist_free(existing_holds);
 			}
 
-			nvlist_free(existing_holds);
 			break;
 		default:
 			ret = zfs_standard_error(hdl, errno, errbuf);
